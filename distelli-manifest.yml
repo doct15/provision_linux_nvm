@@ -1,4 +1,6 @@
 bmcgehee/provision_linux_nvm:
+  Build:
+    - echo "Nothing to build"
   Env:
     # This can be overridden in the App Env Variables in Distelli WebUI
     NVM_VERSION: "v0.31.7"
