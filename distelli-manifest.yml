@@ -1,0 +1,26 @@
+bmcgehee/provision_linux_nvm:
+  Env:
+    # This can be overridden in the App Env Variables in Distelli WebUI
+    NVM_VERSION: "v0.31.7"
+  Install:
+    # Download nvm and install
+    # Note, that since this is being done by the Distelli user, this will be installed
+    #  into: /home/distelli/.nvm
+    #  Which is not bad as builds and deploys are run as the distelli user.
+    #  When building/deploying, typically you would use this as so:
+    #
+    #  DISTELLI_USERNAME/DISTELLI_APPNAME:
+    #    Build:
+    #      - source ~/.nvm/nvm.sh
+    #      - nvm install v4.4.7
+    #      - npm install
+    #      - npm test
+    #    PkgInclude:
+    #      - '*'
+    #    Exec:
+    #      - source ~/.nvm/nvm.sh
+    #      - nvm install v4.4.7
+    #      - nodejs app.js
+    #
+    - curl -o- 'https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh' | bash
+    
